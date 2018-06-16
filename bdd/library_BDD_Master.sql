@@ -25,6 +25,14 @@ CREATE DATABASE library WITH OWNER = library_user ENCODING = 'UTF8' CONNECTION L
 ------------------------------------------------ CREATION DES TABLES --------------------------------------------------
 -- ====================================================================================================================
 
+CREATE TABLE utilisateur(
+  id SERIAL PRIMARY KEY,
+  pseudo CHARACTER VARYING(30) NOT NULL,
+  mdp CHARACTER VARYING(60) NOT NULL,
+  email CHARACTER VARYING(60) NOT NULL,
+  profil CHARACTER VARYING(20) NOT NULL
+);
+
 
 -- ====================================================================================================================
 ---------------------------------------------------- DROITS SUR TABLES ------------------------------------------------
@@ -32,13 +40,8 @@ CREATE DATABASE library WITH OWNER = library_user ENCODING = 'UTF8' CONNECTION L
 
 
 
+GRANT ALL ON TABLE public.utilisateur TO library_user;
 
-GRANT ALL ON SCHEMA public TO library_user;
-
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO library_user;
-GRANT UPDATE ON ALL TABLES IN SCHEMA public TO library_user;
-GRANT INSERT ON ALL TABLES IN SCHEMA public TO library_user;
-GRANT DELETE ON ALL TABLES IN SCHEMA public TO library_user;
 
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO library_user;
 

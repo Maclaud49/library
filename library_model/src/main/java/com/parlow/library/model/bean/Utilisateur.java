@@ -7,21 +7,14 @@ public class Utilisateur {
 
     // ==================== Attributs ====================
     private Integer id;
-    private String nom;
-    private String prenom;
-    private String cotation;
-    private Date dateNaissance;
+    private String pseudo;
     private String email;
-    private String password;
+    private String mdp;
     private String profil;
-    private String adresse1;
-    private String adresse2;
-    private String codePostal;
-    private String ville;
-    private String pays;
-    private Integer nbCommentaires;
+
 
     // ==================== Getters/Setters ==============
+
     public Integer getId() {
         return id;
     }
@@ -30,36 +23,12 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getCotation() {
-        return cotation;
-    }
-
-    public void setCotation(String cotation) {
-        this.cotation = cotation;
-    }
-
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getEmail() {
@@ -70,12 +39,12 @@ public class Utilisateur {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMdp() {
+        return mdp;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public String getProfil() {
@@ -86,53 +55,6 @@ public class Utilisateur {
         this.profil = profil;
     }
 
-    public String getAdresse1() {
-        return adresse1;
-    }
-
-    public void setAdresse1(String adresse1) {
-        this.adresse1 = adresse1;
-    }
-
-    public String getAdresse2() {
-        return adresse2;
-    }
-
-    public void setAdresse2(String adresse2) {
-        this.adresse2 = adresse2;
-    }
-
-    public String getCodePostal() {
-        return codePostal;
-    }
-
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getPays() {
-        return pays;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public Integer getNbCommentaires() {
-        return nbCommentaires;
-    }
-
-    public void setNbCommentaires(Integer nbCommentaires) {
-        this.nbCommentaires = nbCommentaires;
-    }
 
     // ==================== Méthodes =====================
 
@@ -149,8 +71,10 @@ public class Utilisateur {
         final String vSEP = ", ";
         vStB.append(" {")
                 .append("id=").append(id)
-                .append(vSEP).append("nom=\"").append(nom).append('"')
-                .append(vSEP).append("prenom=\"").append(prenom).append('"')
+                .append(vSEP).append("pseudo=\"").append(pseudo).append('"')
+                .append(vSEP).append("email=\"").append(email).append('"')
+                .append(vSEP).append("mdp=\"").append(mdp).append('"')
+                .append(vSEP).append("profil=\"").append(profil).append('"')
                 .append("}");
         return vStB.toString();
     }

@@ -109,10 +109,10 @@ public class GestionUtilisateurAction extends ActionSupport {
 
         //vérification si affiche les données ou les update
         if (this.utilisateur != null) {
-            this.utilisateur.setNom(premiereLettreMaj(utilisateur.getNom()));
-            this.utilisateur.setPrenom(premiereLettreMaj(utilisateur.getPrenom()));
-            this.utilisateur.setVille(premiereLettreMaj(utilisateur.getVille()));
-            this.utilisateur.setPays(premiereLettreMaj(utilisateur.getPays()));
+            this.utilisateur.setPseudo(premiereLettreMaj(utilisateur.getPseudo()));
+            this.utilisateur.setEmail(premiereLettreMaj(utilisateur.getEmail()));
+            this.utilisateur.setMdp(premiereLettreMaj(utilisateur.getMdp()));
+            this.utilisateur.setProfil(premiereLettreMaj(utilisateur.getProfil()));
             try {
                 managerFactory.getUtilisateurManager().update(utilisateur);
                 vResult = ActionSupport.SUCCESS;
@@ -163,13 +163,13 @@ public class GestionUtilisateurAction extends ActionSupport {
     @Override
     public void validate() {
         if (utilisateur != null) {
-            if (!StringUtils.isAllEmpty(utilisateur.getNom(), utilisateur.getPrenom())) {
+            if (!StringUtils.isAllEmpty(utilisateur.getPseudo(), utilisateur.getEmail())) {
                 logger.info("Conditions remplies pour étape validation");
-                if (utilisateur.getNom().length() < 2 || utilisateur.getNom().length() > 15) {
-                    addFieldError("registerNom", "Votre nom doit faire entre 2 et 15 caratères ");
+                if (utilisateur.getPseudo().length() < 2 || utilisateur.getPseudo().length() > 30) {
+                    addFieldError("registerPseudo", "Votre pseudo doit faire entre 2 et 30 caratères ");
                 }
-                if (utilisateur.getPrenom().length() < 2 || utilisateur.getPrenom().length() > 15) {
-                    addFieldError("registerPrenom", "Votre prénom doit faire entre 2 et 15 caratères ");
+                if (utilisateur.getEmail().length() < 2 || utilisateur.getEmail().length() > 60) {
+                    addFieldError("registerEmail", "Votre email doit faire entre 2 et 60 caratères ");
                 }
             } else {
                 logger.info("Conditions non remplies pour étape validation");

@@ -1,6 +1,6 @@
-# library
+# Escalade
 
-Site communautaire pour les amoureux de library
+Site communautaire pour les amoureux de l'escalade
 
 ## Pour commencer
 
@@ -28,13 +28,13 @@ https://www.pgadmin.org/download/
 ### Installation
 
 Importer le projet via votre IDE à partir du lien GitHub suivant :
-https://github.com/Maclaud49/library.git
+https://github.com/Maclaud49/escalade.git
 
-Depuis le répertoire library>bdd, utiliser le fichier
-library_BDD_Master pour créer la structure de la base de données PosgreSQL
+Depuis le répertoire escalade>bdd, utiliser le fichier
+Escalade_BDD_Master pour créer la structure de la base de données PosgreSQL
 
 Ensuite utiliser le fichier 
-library_BDD_Data pour injecter les données inititales de l'application
+Escalade_BDD_Data pour injecter les données inititales de l'application
 
 ## Déploiement
 
@@ -44,13 +44,22 @@ library_BDD_Data pour injecter les données inititales de l'application
 
 Utiliser le profil : target-dev
 
-commande Maven : maven install -P target-dev
+Commande Maven : maven install -P target-dev
 
-Le war ainsi créé est alors dépoyable sur le Tomcat
+(rajouter étapes pour déploiement)
+
+Le war ainsi créé est alors dépoyable sur le Tomcat et ensuite accessible :
+
+http://localhost:8080/
+
+```
+Exemple de tutoriel pour déployer un war sur Tomcat :
+http://www.developper-jeux-video.com/deployer-fichier-war-tomcat/
+```
 
 ## Auteur
 
-* **Mickaël PArlow** - *Application initiale* - 
+* **Mickaël Parlow** - *Application initiale* - 
 
 ## Remerciements
 

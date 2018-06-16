@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <!-- =============================================================== -->
     <!-- Dépendances -->
     <!-- =============================================================== -->
@@ -43,5 +44,6 @@
             <artifactId>validation-api</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>
