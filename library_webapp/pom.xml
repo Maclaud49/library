@@ -29,11 +29,7 @@
         </dependency>
 
         <!-- ===== Bibliothèques tierces ===== -->
-        <!-- ===== Tests ===== -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

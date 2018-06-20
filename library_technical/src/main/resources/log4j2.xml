@@ -10,7 +10,7 @@
             <PatternLayout pattern="Struts2 : %d{dd MMM yyy HH:mm:ss} %highlight{ %l %-5level: %msg%n%throwable}{STYLE=Logback}"/>
         </Console>
         <Console name="ConsoleEscalade" target="SYSTEM_OUT">
-            <PatternLayout pattern="Escalade :  %d{dd MMM yyy HH:mm:ss} %highlight{ %l %-5level: %msg%n%throwable}{STYLE=Logback}"/>
+            <PatternLayout pattern="Library :  %d{dd MMM yyy HH:mm:ss} %highlight{ %l %-5level: %msg%n%throwable}{STYLE=Logback}"/>
         </Console>
         <File name="File" fileName="C:\Mickael\log\out.txt">
             <PatternLayout pattern="%d{dd MMM yyy HH:mm:ss} %-5level %logger{36} - %msg%n" />

@@ -1,6 +1,11 @@
-package com.parlow.library.model;
+package com.parlow.library.model.bean;
 
 import javax.persistence.*;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +17,7 @@ public class UtilisateurEntity implements Serializable {
     private String mdp;
     private String email;
     private String profil;
+    private final static String  PROFILMEMBRE = "MEMBRE";
 
     @Id
     @Column(name = "id", nullable = false)
@@ -24,6 +30,8 @@ public class UtilisateurEntity implements Serializable {
     }
 
     @Basic
+    @NotNull
+    @Size(min=2, max=30)
     @Column(name = "pseudo", nullable = false, length = 30)
     public String getPseudo() {
         return pseudo;
@@ -34,6 +42,8 @@ public class UtilisateurEntity implements Serializable {
     }
 
     @Basic
+    @NotNull
+    @Size(min=6, max=60)
     @Column(name = "mdp", nullable = false, length = 60)
     public String getMdp() {
         return mdp;
@@ -44,6 +54,9 @@ public class UtilisateurEntity implements Serializable {
     }
 
     @Basic
+    @NotNull
+    @Size(max=60)
+    @Email
     @Column(name = "email", nullable = false, length = 60)
     public String getEmail() {
         return email;
@@ -54,13 +67,21 @@ public class UtilisateurEntity implements Serializable {
     }
 
     @Basic
+    @NotNull
+    @Pattern(regexp="Membre|Admin")
+    @Size(max=20)
     @Column(name = "profil", nullable = false, length = 20)
     public String getProfil() {
         return profil;
     }
 
     public void setProfil(String profil) {
-        this.profil = profil;
+        if(profil.equals("")){
+            this.profil = PROFILMEMBRE;
+        }
+        else{
+            this.profil = profil;
+        }
     }
 
     @Override
@@ -87,5 +108,19 @@ public class UtilisateurEntity implements Serializable {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (profil != null ? profil.hashCode() : 0);
         return result;
+    }
+
+    public UtilisateurEntity(){}
+
+    public UtilisateurEntity(String pseudo, String mdp, String email, String profil){
+        this.pseudo = pseudo;
+        this.mdp = mdp;
+        this.email = email;
+        this.profil = profil;
+    }
+
+    public UtilisateurEntity(String email, String mdp){
+        this.email = email;
+        this.mdp = mdp;
     }
 }

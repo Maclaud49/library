@@ -1,9 +1,9 @@
 package com.parlow.library.model.bean;
 
-import java.sql.Date;
-import java.util.List;
+import java.io.Serializable;
 
-public class Utilisateur {
+public class Utilisateur implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     // ==================== Attributs ====================
     private Integer id;
@@ -63,7 +63,9 @@ public class Utilisateur {
      *
      *
      */
-    public Utilisateur() { }
+    public Utilisateur() {
+        //Constructeur par default
+    }
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.parlow.library.model.UtilisateurEntity" table="utilisateur" schema="public" catalog="library">
+    <class name="com.parlow.library.model.bean.UtilisateurEntity" table="utilisateur" schema="public" catalog="library">
         <id name="id">
             <column name="id" sql-type="integer"/>
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">

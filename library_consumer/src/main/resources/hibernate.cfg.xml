@@ -11,7 +11,7 @@
     <property name="connection.password">library_2018</property>
     <property name="current_session_context_class">thread</property>
     <mapping resource="UtilisateurEntity.hbm.xml"/>
-    <mapping class="com.parlow.library.model.UtilisateurEntity"/>
+    <mapping class="com.parlow.library.model.bean.UtilisateurEntity"/>
 
 
     <!-- DB schema will be updated if needed -->
