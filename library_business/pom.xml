@@ -32,11 +32,7 @@
         </dependency>
 
         <!-- ===== Bibliothèques tierces ===== -->
-        <!-- ===== Tests ===== -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
+
         <!-- JSR-330 -->
         <dependency>
             <groupId>javax.inject</groupId>

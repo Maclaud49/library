@@ -12,7 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 public class HibernateUtil {
 
     private static final Logger logger = LogManager.getLogger(HibernateUtil.class);
-    
+
     private static SessionFactory sessionFactory;
 
 
@@ -24,8 +24,8 @@ public class HibernateUtil {
             return sessionFactory;
         }
         catch (Throwable ex) {
-           
-            logger.error("Initial SessionFactory creation failed." + ex);
+
+            logger.debug("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

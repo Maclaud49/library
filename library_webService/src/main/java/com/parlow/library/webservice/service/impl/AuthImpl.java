@@ -8,12 +8,14 @@ import com.parlow.library.webservice.service.contract.AuthI;
 import com.parlow.library.model.bean.UtilisateurEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
 
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jws.WebService;
 
+import javax.persistence.NoResultException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
@@ -67,11 +69,19 @@ public class AuthImpl extends AbstractDao implements AuthI {
         UtilisateurEntity utilisateur;
 
         UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
-        utilisateur = utilisateurDao.findMember(email,mdp);
+        try {
+            utilisateur = utilisateurDao.findMember(email, mdp);
+            message.append("Vous etes " + utilisateur.getPseudo());
+        }catch(NoResultException e){
+            message.append(e);
+        }catch(HibernateException e){
+            message.append(e);
+        }
+
 
         //utilisateur = daoFactory.getUtilisateurDao().findMember(email,mdp);
 
-        message.append("Vous etes " + utilisateur.getPseudo());
+
 
         return message.toString();
     }
