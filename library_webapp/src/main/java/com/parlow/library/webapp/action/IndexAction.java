@@ -2,7 +2,9 @@ package com.parlow.library.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.parlow.library.business.manager.contract.ManagerFactory;
+import com.parlow.library.consumer.dao.contract.DaoFactory;
 import com.parlow.library.model.bean.Utilisateur;
+import com.parlow.library.model.bean.UtilisateurEntity;
 import com.parlow.library.model.exception.NotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +23,7 @@ public class IndexAction extends ActionSupport implements ServletRequestAware, S
 
     private static final Logger logger = LogManager.getLogger(IndexAction.class);
     @Inject
-    private ManagerFactory managerFactory;
+    private DaoFactory daoFactory;
     private Map<String, Object> session;
     private HttpServletRequest servletRequest;
     protected Utilisateur utilisateur;
@@ -43,14 +45,21 @@ public class IndexAction extends ActionSupport implements ServletRequestAware, S
      * @return input / success
      */
     public String doIndex() {
-        if (rememberMeLoad() >0){
+
+        /*UtilisateurEntity utilisateur = new UtilisateurEntity("Maclaud1", "Pourvuquecamarche", "mac@parlow-co.com", "Admin");
+
+        daoFactory.getUtilisateurDao().enregistrement(utilisateur);*/
+
+
+
+        /*if (rememberMeLoad() >0){
             try {
                 this.utilisateur = managerFactory.getUtilisateurManager().findById(rememberMeLoad());
             } catch (NotFoundException pEx) {
                 this.addActionError(getText("error.login.incorrect"));
             }
             this.session.put("library_user", this.utilisateur);
-        }
+        }*/
         String vResult = ActionSupport.SUCCESS;
         return vResult;
     }

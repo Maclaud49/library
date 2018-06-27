@@ -24,12 +24,14 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 
-@WebService(serviceName="Auth",
+@WebService(serviceName="Auth",targetNamespace = "Authorization",
         endpointInterface = "com.parlow.library.webservice.service.contract.AuthI")
 @Named
-public class AuthImpl extends AbstractDao implements AuthI {
+public class AuthImpl implements AuthI {
 
     private static final Logger logger = LogManager.getLogger(AuthImpl.class);
+
+
 
     @Override
     public String enregistrement(String pseudo,String mdp, String email, String profil ){
@@ -53,7 +55,8 @@ public class AuthImpl extends AbstractDao implements AuthI {
            UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
             utilisateurDao.enregistrement(utilisateur);
 
-            //daoFactory.getUtilisateurDao().enregistrement(utilisateur);
+            /*daoFactory.getUtilisateurDao();
+            daoFactory.getUtilisateurDao().enregistrement(utilisateur);*/
             message.append("Utilisateur enregistré");
         }
 

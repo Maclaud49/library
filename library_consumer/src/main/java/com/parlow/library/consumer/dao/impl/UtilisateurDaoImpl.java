@@ -17,11 +17,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+
 @Named
 public class UtilisateurDaoImpl implements UtilisateurDao {
 
+
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private static final Logger logger = LogManager.getLogger(UtilisateurDaoImpl.class);
+
+
 
     @Override
     public void enregistrement(UtilisateurEntity utilisateur ){
@@ -66,7 +70,6 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         }
 
         return utilisateur;
-
 
     }
 }
