@@ -29,15 +29,7 @@
         <name>Mickaël Parlow</name>
     </organization>
 
-    <!-- =============================================================== -->
-    <!-- DistributionManagement -->
-    <!-- =============================================================== -->
-    <distributionManagement>
-        <site>
-            <id>site-projet</id>
-            <url>scp://localhost/tmp/</url>
-        </site>
-    </distributionManagement>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -275,6 +267,11 @@
                 <version>9.4.1212</version>
                 <scope>runtime</scope>
             </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>8.0</version>
+            </dependency>
 
 
         </dependencies>
@@ -320,15 +317,6 @@
                     <version>3.0.0</version>
                 </plugin>
 
-                <!-- Site -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.6</version>
-                    <configuration>
-                        <locales>fr</locales>
-                    </configuration>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>

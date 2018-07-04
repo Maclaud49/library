@@ -1,11 +1,10 @@
 package com.parlow.library.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.parlow.library.business.manager.contract.ManagerFactory;
 import com.parlow.library.consumer.dao.contract.DaoFactory;
 import com.parlow.library.model.bean.Utilisateur;
-import com.parlow.library.model.bean.UtilisateurEntity;
-import com.parlow.library.model.exception.NotFoundException;
+import com.parlow.library.webapp.client.AuthI;
+import com.parlow.library.webapp.client.AuthImplService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -50,6 +49,10 @@ public class IndexAction extends ActionSupport implements ServletRequestAware, S
 
         daoFactory.getUtilisateurDao().enregistrement(utilisateur);*/
 
+        AuthImplService authService = new AuthImplService();
+        AuthI save = authService.getAuthImplPort();
+
+        logger.info(save.enregistrement("Maclaud1", "DepuisIndex", "mac@parlow-co.com", "Admin"));
 
 
         /*if (rememberMeLoad() >0){

@@ -11,8 +11,10 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 
+
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import javax.persistence.NoResultException;
@@ -23,17 +25,13 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-
-@WebService(serviceName="Auth",targetNamespace = "Authorization",
-        endpointInterface = "com.parlow.library.webservice.service.contract.AuthI")
-@Named
-public class AuthImpl implements AuthI {
+@WebService(endpointInterface = "com.parlow.library.webservice.service.contract.AuthI")
+public class AuthImpl  {
 
     private static final Logger logger = LogManager.getLogger(AuthImpl.class);
 
 
-
-    @Override
+    @WebMethod
     public String enregistrement(String pseudo,String mdp, String email, String profil ){
 
         StringBuilder message = new StringBuilder();
@@ -64,7 +62,7 @@ public class AuthImpl implements AuthI {
 
     }
 
-    @Override
+    @WebMethod
     public String connecter(String email, String mdp) {
 
         StringBuilder message = new StringBuilder();

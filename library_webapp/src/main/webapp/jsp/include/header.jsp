@@ -14,15 +14,15 @@
 
 
 
-                <s:if test="#session.escalade_user">
+                <s:if test="#session.library_user">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"> <s:property value="#session.escalade_user.prenom" /></i>
+                            <i class="fa fa-user"> <s:property value="#session.library_user.prenom" /></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                             <s:a action="logout" class="dropdown-item">Déconnexion</s:a>
                             <s:a action="utilisateur_detail" class="dropdown-item">
-                                <s:param name="utilisateurId" value="#session.escalade_user.id" />
+                                <s:param name="utilisateurId" value="#session.library_user.id" />
                                 Profil
                             </s:a>
                         </div>
