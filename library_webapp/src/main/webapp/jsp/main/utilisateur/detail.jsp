@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <s:a action="index" ><s:text name="home.home"/></s:a>
+            <s:a action="index" >Accueil</s:a>
         </li>
         <li class="breadcrumb-item active">Profil</li>
     </ol>
@@ -168,33 +168,7 @@
                 </div>
             </div>
         </fieldset>
-        <fieldset class="form-group">
-            <legend>Topos</legend>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-7">
-                    <div class="card-text"></strong>
-                        <s:if test="listTopo.size() == 0">
-                            Pas de topos
-                        </s:if>
-                        <s:else>
-                            <ul class="text-center">
-                                <s:iterator value="listTopo">
-                                    <s:if test="publication == true && utilisateur.id == #session.escalade_user.id|| #session.escalade_user.profil =='admin'">
-                                        <li style = "list-style: none;margin:10px">
-                                            <s:a action="topo_detail" class="btn btn-primary">
-                                                <s:param name="topoId" value="id" />
-                                                <s:property value="nom" />
-                                            </s:a>
-                                        </li>
-                                    </s:if>
-                                </s:iterator>
-                            </ul>
-                        </s:else>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
+
 
 
         <div class="row">

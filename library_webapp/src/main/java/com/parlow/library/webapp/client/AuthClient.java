@@ -11,9 +11,6 @@ public class AuthClient {
         AuthI save = authService.getAuthImplPort();
 
 
-        logger.info(save.enregistrement("Maclaud1", "Av", "mac@parlow-co.com", "Admin"));
-        logger.error(save.enregistrement("Maclaud1", "Av", "mac@parlow-co.com", "Admin"));
-        logger.debug(save.enregistrement("Maclaud1", "Av", "mac@parlow-co.com", "Admin"));
         logger.info(save.enregistrement("Maclaud1", "AvecHonneur", "mac@parlow-co.com", "Admin"));
         logger.debug(save.enregistrement("Maclaud1", "Av", "mac@parlow-co.com", "Admin"));
 

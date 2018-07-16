@@ -1,7 +1,6 @@
 package com.parlow.library.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.parlow.library.consumer.dao.contract.DaoFactory;
 import com.parlow.library.model.bean.Utilisateur;
 import com.parlow.library.webapp.client.AuthI;
 import com.parlow.library.webapp.client.AuthImplService;
@@ -21,8 +20,6 @@ public class IndexAction extends ActionSupport implements ServletRequestAware, S
     // ==================== Attributs ====================
 
     private static final Logger logger = LogManager.getLogger(IndexAction.class);
-    @Inject
-    private DaoFactory daoFactory;
     private Map<String, Object> session;
     private HttpServletRequest servletRequest;
     protected Utilisateur utilisateur;
@@ -45,14 +42,10 @@ public class IndexAction extends ActionSupport implements ServletRequestAware, S
      */
     public String doIndex() {
 
-        /*UtilisateurEntity utilisateur = new UtilisateurEntity("Maclaud1", "Pourvuquecamarche", "mac@parlow-co.com", "Admin");
-
-        daoFactory.getUtilisateurDao().enregistrement(utilisateur);*/
-
         AuthImplService authService = new AuthImplService();
         AuthI save = authService.getAuthImplPort();
 
-        logger.info(save.enregistrement("Maclaud1", "DepuisIndex", "mac@parlow-co.com", "Admin"));
+        //logger.info(save.enregistrement("Maclaud1", "DepuisIndex", "mac@parlow-co.com", "Admin"));
 
 
         /*if (rememberMeLoad() >0){

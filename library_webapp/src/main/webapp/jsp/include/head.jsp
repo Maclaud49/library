@@ -11,7 +11,7 @@
 <!-- Bootstrap core CSS -->
 <link href="../../ressources/template/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Custom styles for main template -->
 <link href="../../ressources/template/main/css/modern-business.css" rel="stylesheet">
 <!-- MetisMenu CSS -->

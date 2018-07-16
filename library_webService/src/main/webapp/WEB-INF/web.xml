@@ -20,6 +20,17 @@ Inc.//DTD Web Application 2.3//EN"
         <servlet-name>auth</servlet-name>
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>visitor</servlet-name>
+        <servlet-class>
+            com.sun.xml.ws.transport.http.servlet.WSServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>visitor</servlet-name>
+        <url-pattern>/visitor</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>120</session-timeout>
     </session-config>

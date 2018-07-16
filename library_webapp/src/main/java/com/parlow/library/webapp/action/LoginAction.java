@@ -3,6 +3,8 @@ package com.parlow.library.webapp.action;
 import com.parlow.library.business.manager.contract.ManagerFactory;
 import com.parlow.library.model.bean.Utilisateur;
 import com.parlow.library.model.exception.NotFoundException;
+import com.parlow.library.webapp.client.AuthI;
+import com.parlow.library.webapp.client.AuthImplService;
 import org.apache.commons.lang3.StringUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -72,6 +74,9 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
         String vResult = ActionSupport.INPUT;
 
         if (!StringUtils.isAllEmpty(email, password)) {
+
+            AuthImplService authService = new AuthImplService();
+            AuthI save = authService.getAuthImplPort();
             try {
                 Utilisateur vUtilisateur
                         = managerFactory.getUtilisateurManager().login(email, password);

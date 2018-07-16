@@ -1,34 +1,33 @@
 package com.parlow.library.webservice.service.impl;
 
-import com.parlow.library.consumer.dao.contract.DaoFactory;
-import com.parlow.library.consumer.dao.contract.UtilisateurDao;
-import com.parlow.library.consumer.dao.impl.DaoFactoryImpl;
-import com.parlow.library.consumer.dao.impl.UtilisateurDaoImpl;
-import com.parlow.library.webservice.service.contract.AuthI;
+
+
+import com.parlow.library.consumer.dao.impl.UtilisateurDao;
 import com.parlow.library.model.bean.UtilisateurEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.HibernateException;
 
-
-
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import javax.persistence.NoResultException;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.List;
 import java.util.Set;
 
 @WebService(endpointInterface = "com.parlow.library.webservice.service.contract.AuthI")
 public class AuthImpl  {
 
     private static final Logger logger = LogManager.getLogger(AuthImpl.class);
+    private UtilisateurDao utilisateurDao;
+
+    public AuthImpl(){
+        utilisateurDao = new UtilisateurDao();
+    }
 
 
     @WebMethod
@@ -50,41 +49,71 @@ public class AuthImpl  {
         }
 
         if(violations.isEmpty()){
-           UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
-            utilisateurDao.enregistrement(utilisateur);
-
-            /*daoFactory.getUtilisateurDao();
-            daoFactory.getUtilisateurDao().enregistrement(utilisateur);*/
-            message.append("Utilisateur enregistré");
+            try{
+                this.persist(utilisateur);
+                message.append("Utilisateur enregistré");
+            } catch (Exception e){
+                logger.debug(e.toString());
+            }
         }
 
         return message.toString();
-
     }
 
     @WebMethod
     public String connecter(String email, String mdp) {
 
         StringBuilder message = new StringBuilder();
-
         UtilisateurEntity utilisateur;
 
-        UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
         try {
-            utilisateur = utilisateurDao.findMember(email, mdp);
+            utilisateur = this.findMember(email, mdp);
             message.append("Vous etes " + utilisateur.getPseudo());
-        }catch(NoResultException e){
-            message.append(e);
-        }catch(HibernateException e){
-            message.append(e);
+        }catch(Exception e) {
+            logger.debug(e.toString());
         }
-
-
-        //utilisateur = daoFactory.getUtilisateurDao().findMember(email,mdp);
-
-
-
         return message.toString();
+    }
+
+    private void persist(UtilisateurEntity entity) {
+
+        this.utilisateurDao.openCurrentSessionwithTransaction();
+        this.utilisateurDao.persist(entity);
+        this.utilisateurDao.closeCurrentSessionwithTransaction();
+    }
+
+
+    private void update(UtilisateurEntity entity) {
+        this.utilisateurDao.openCurrentSessionwithTransaction();
+        this.utilisateurDao.update(entity);
+        this.utilisateurDao.closeCurrentSessionwithTransaction();
+    }
+
+    private UtilisateurEntity findById(int id) {
+        this.utilisateurDao.openCurrentSession();
+        UtilisateurEntity UtilisateurEntity = this.utilisateurDao.findById(id);
+        this.utilisateurDao.closeCurrentSession();
+        return UtilisateurEntity;
+    }
+
+    private void delete(int id) {
+        this.utilisateurDao.openCurrentSessionwithTransaction();
+        UtilisateurEntity UtilisateurEntity = this.utilisateurDao.findById(id);
+        this.utilisateurDao.delete(UtilisateurEntity);
+        this.utilisateurDao.closeCurrentSessionwithTransaction();
+    }
+
+    private List<UtilisateurEntity> findAll() {
+        this.utilisateurDao.openCurrentSession();
+        List<UtilisateurEntity> UtilisateurEntitys = this.utilisateurDao.findAll();
+        this.utilisateurDao.closeCurrentSession();
+        return UtilisateurEntitys;
+    }
+    private UtilisateurEntity findMember(String email, String mdp) {
+        this.utilisateurDao.openCurrentSession();
+        UtilisateurEntity UtilisateurEntity = this.utilisateurDao.findMember(email,mdp);
+        this.utilisateurDao.closeCurrentSession();
+        return UtilisateurEntity;
     }
 
 }

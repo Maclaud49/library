@@ -40,10 +40,10 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="sr-only" for="password">Mot de passe</label>
+                    <label class="sr-only" for="mdp">Mot de passe</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                        <s:password type="password" class="form-control" name="password"  placeholder="Votre mot de passe"
+                        <s:password type="password" class="form-control" name="mdp"  placeholder="Votre mot de passe"
                                     title=" Votre mot de passe - Au moins 6 caractères" required="true" />
                     </div>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -60,10 +60,10 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="sr-only" for="password">Vérification mot de passe</label>
+                    <label class="sr-only" for="mdp2">Vérification mot de passe</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                        <s:password type="password" class="form-control" name="password2" placeholder="Vérification de votre mot de passe"
+                        <s:password type="password" class="form-control" name="mdp2" placeholder="Vérification de votre mot de passe"
                                     title="Vérification de votre mot de passe" required="true"/>
                     </div>
                     <s:if test="hasFieldErrors()">
@@ -86,31 +86,19 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="form-group has-danger">
-                    <label class="sr-only" for="nom">Nom</label>
+                    <label class="sr-only" for="pseudo">Pseudo</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <s:textfield name="nom" class="form-control" placeholder="Votre nom" title="Votre nom" required="true"/>
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+                        <s:textfield name="pseudo" class="form-control" placeholder="Votre pseudo" title="Votre pseudo" required="true"/>
                     </div>
                     <s:if test="hasFieldErrors()">
-                        <small class="text-danger align-middle"><s:fielderror fieldName="registerNom" style="list-style:none"/></small>
+                        <small class="text-danger align-middle"><s:fielderror fieldName="registerPseudo" style="list-style:none"/></small>
                     </s:if>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="form-group has-danger">
-                    <label class="sr-only" for="prenom">Prénom</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <s:textfield name="prenom" class="form-control" placeholder="Votre prénom" title="Votre prénom" required="true"/>
-                    </div>
-                    <s:if test="hasFieldErrors()">
-                        <small class="text-danger align-middle"><s:fielderror fieldName="registerPrenom" style="list-style:none"/></small>
-                    </s:if>
-                </div>
-            </div>
-        </div>
-        <s:if test="#session.escalade_user.profil =='admin'">
+
+        <s:if test="#session.escalade_user.profil =='Admin'">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -118,7 +106,7 @@
                         <label>Profil</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <s:select  class="form-control" name="profil"
-                                       list="{'utilisateur','admin'}" value="utilisateur"/>
+                                       list="{'Membre','Admin'}" value="Membre"/>
                         </div>
                     </div>
                 </div>
@@ -126,7 +114,7 @@
         </s:if>
         <s:else>
             <div style="display: none;">
-                <s:textfield name="profil" value="utilisateur"/>
+                <s:textfield name="profil" value="Membre"/>
             </div>
         </s:else>
 
@@ -136,12 +124,15 @@
                         <span class="text-danger align-middle">
                             <s:actionerror class="text-danger align-middle"/>
                         </span>
+                        <s:if test="hasFieldErrors()">
+                            <small class="text-danger align-middle"><s:fielderror fieldName="result" style="list-style:none"/></small>
+                        </s:if>
             </div>
         </div>
 
         <div class="row" style="padding-top: 1rem">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+
+            <div class="col-md-12 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> S'enregistrer</button>
             </div>
         </div>

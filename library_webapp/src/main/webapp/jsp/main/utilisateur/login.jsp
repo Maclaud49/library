@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <h2><s:text name="login.connexion"/></h2>
+                        <h2>Connexion</h2>
                         <smal><s:a action="register">Je m'enregistre</s:a></smal>
                         <hr>
                     </div>

@@ -32,7 +32,7 @@ public class UtilisateurEntity implements Serializable {
 
     @Basic
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min=4, max=30)
     @Column(name = "pseudo", nullable = false, length = 30)
     public String getPseudo() {
         return pseudo;

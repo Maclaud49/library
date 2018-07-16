@@ -6,4 +6,8 @@
             name="Auth"
             implementation="com.parlow.library.webservice.service.impl.AuthImpl"
             url-pattern="/auth"/>
+    <endpoint
+            name="Visitor"
+            implementation="com.parlow.library.webservice.service.impl.VisitorImpl"
+            url-pattern="/visitor"/>
 </endpoints>

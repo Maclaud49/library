@@ -2,9 +2,9 @@ package com.parlow.library.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.parlow.library.business.manager.contract.ManagerFactory;
-import com.parlow.library.model.bean.Utilisateur;
-import com.parlow.library.model.exception.FunctionalException;
-import com.parlow.library.model.exception.NotFoundException;
+import com.parlow.library.model.bean.UtilisateurEntity;
+import com.parlow.library.webapp.client.AuthI;
+import com.parlow.library.webapp.client.AuthImplService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,24 +75,20 @@ public class RegisterAction extends ActionSupport implements ServletRequestAware
     public String doRegister() {
         String vResult = ActionSupport.INPUT;
         if (!StringUtils.isAllEmpty(pseudo, email, mdp)) {
-            Utilisateur vUtilisateur = new Utilisateur();
-            vUtilisateur.setPseudo(premiereLettreMaj(pseudo));
-            vUtilisateur.setEmail(email);
-            vUtilisateur.setMdp(mdp);
-            vUtilisateur.setProfil(profil);
+            AuthImplService authService = new AuthImplService();
+            AuthI auth = authService.getAuthImplPort();
 
-            try {
-                int id = managerFactory.getUtilisateurManager().insert(vUtilisateur);
-                // Ajout de l'utilisateur en session
-                logger.info("id" + id);
-                vUtilisateur.setId(id);
-                logger.info("pseudo" + vUtilisateur.getPseudo());
-                this.session.put("library_user", vUtilisateur);
+            UtilisateurEntity utilisateur = new UtilisateurEntity(pseudo, mdp, email, profil);
+            String result = auth.enregistrement(pseudo, mdp, email, profil);
+            logger.debug(result);
+            if(result.equals("Utilisateur enregistré")) {
                 vResult = ActionSupport.SUCCESS;
-            } catch (FunctionalException e) {
-                this.addActionError(getText("problème technique"));
+            }
+            else{
+                addFieldError("result", result);
             }
         }
+
         return vResult;
     }
 
@@ -126,14 +122,14 @@ public class RegisterAction extends ActionSupport implements ServletRequestAware
             if (mdp.length() < 6 || mdp.length() >60) {
                 addFieldError("registerPassword", "Votre mot de passe doit faire entre 6 et 60 caratères ");
             }
-            try {
+            /*try {
                 managerFactory.getUtilisateurManager().findByEmail(email);
             } catch (NotFoundException e) {
                 userExist = false;
             }
             if(userExist){
                 addFieldError("registerEmail", "Cet email est déjà utilisée ");
-            }
+            }*/
             if(!mdp.equals(mdp2)){
                 addFieldError("registerPassword2", "Les mots de passe ne sont pas identiques ");
             }
