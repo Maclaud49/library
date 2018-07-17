@@ -21,21 +21,6 @@ public interface AuthI {
 
     /**
      * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    public String connecter(
-            @WebParam(name = "arg0", partName = "arg0")
-                    String arg0,
-            @WebParam(name = "arg1", partName = "arg1")
-                    String arg1);
-
-    /**
-     * 
      * @param arg3
      * @param arg2
      * @param arg1
@@ -45,7 +30,7 @@ public interface AuthI {
      */
     @WebMethod
     @WebResult(partName = "return")
-    public String enregistrement(
+    public String register(
             @WebParam(name = "arg0", partName = "arg0")
                     String arg0,
             @WebParam(name = "arg1", partName = "arg1")
@@ -54,5 +39,44 @@ public interface AuthI {
                     String arg2,
             @WebParam(name = "arg3", partName = "arg3")
                     String arg3);
+
+    /**
+     *
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    public String findUser(
+            @WebParam(name = "arg0", partName = "arg0")
+                    int arg0);
+
+    /**
+     *
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    public String connexion(
+            @WebParam(name = "arg0", partName = "arg0")
+                    String arg0,
+            @WebParam(name = "arg1", partName = "arg1")
+                    String arg1);
+
+    /**
+     *
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    public String findEmail(
+            @WebParam(name = "arg0", partName = "arg0")
+                    String arg0);
 
 }

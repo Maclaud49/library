@@ -109,6 +109,27 @@ public class UtilisateurDao implements UtilisateurDaoInterface<UtilisateurEntity
 
     }
 
+    @Override
+    public UtilisateurEntity findByEmail(String email) {
+
+        CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<UtilisateurEntity> criteria = builder.createQuery( UtilisateurEntity.class );
+        Root<UtilisateurEntity> root = criteria.from(UtilisateurEntity.class);
+
+        criteria.where(
+                builder.and(
+                        builder.equal(root.get("email"), email)
+                ));
+
+        UtilisateurEntity utilisateur = getCurrentSession().createQuery(criteria).getSingleResult();
+        //Todo remplacer par list pour éviter erreur si null
+
+        return utilisateur;
+
+    }
+
+
+
 
 
 }

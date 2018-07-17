@@ -16,6 +16,7 @@ public class UtilisateurEntity implements Serializable {
     private int id;
     private String pseudo;
     private String mdp;
+
     private String email;
     private String profil;
     private final static String  PROFILMEMBRE = "MEMBRE";

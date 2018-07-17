@@ -10,12 +10,11 @@
     <property name="connection.username">library_user</property>
     <property name="connection.password">library_2018</property>
     <property name="current_session_context_class">thread</property>
+    <property name="hbm2ddl.auto">update</property>
     <mapping resource="UtilisateurEntity.hbm.xml"/>
     <mapping class="com.parlow.library.model.bean.UtilisateurEntity"/>
 
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>
 

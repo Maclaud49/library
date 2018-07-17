@@ -28,7 +28,7 @@
         <Logger name="org.apache.struts2" level="error">
             <AppenderRef ref="ConsoleStruts2"/>
         </Logger>
-        <Logger name="com.parlow.library" level="info" additivity="false">
+        <Logger name="com.parlow.library" level="all" additivity="false">
             <AppenderRef ref="ConsoleLibrary"/>
             <AppenderRef ref="File"/>
         </Logger>

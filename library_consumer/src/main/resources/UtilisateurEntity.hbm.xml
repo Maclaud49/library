@@ -20,7 +20,7 @@
             <column name="mdp" sql-type="varchar(60)" length="60"/>
         </property>
         <property name="email">
-            <column name="email" sql-type="varchar(60)" length="60"/>
+            <column name="email" sql-type="varchar(60)" length="60" unique="true"/>
         </property>
         <property name="profil">
             <column name="profil" sql-type="varchar(20)" length="20"/>

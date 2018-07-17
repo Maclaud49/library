@@ -11,13 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-
-
-
                 <s:if test="#session.library_user">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"> <s:property value="#session.library_user.prenom" /></i>
+                            <i class="fa fa-user"> <s:property value="#session.library_user.pseudo" /></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                             <s:a action="logout" class="dropdown-item">Déconnexion</s:a>
@@ -39,20 +36,6 @@
                         </div>
                     </li>
                 </s:else>
-
-
-                <li class="nav-item">
-
-                        <div class="input-group">
-                            <form method="POST" action="search.action" class="form-inline">
-                                <s:textfield name="keyWord" class="form-control" placeholder="Rechercher..." required="true"></s:textfield>
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-secondary">Go!</button>
-                                </span>
-                            </form>
-                        </div>
-
-                </li>
             </ul>
         </div>
     </div>

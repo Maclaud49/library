@@ -14,15 +14,13 @@
     <bean id="gestionUtilisateurAction"
           class="com.parlow.library.webapp.action.GestionUtilisateurAction"
           scope= "prototype"  />
-    <bean id="loginAction"
-          class="com.parlow.library.webapp.action.LoginAction"
-          scope= "prototype"  />
-    <bean id="registerAction"
-          class="com.parlow.library.webapp.action.RegisterAction"
-          scope= "prototype"  />
     <bean id="indexAction"
           class="com.parlow.library.webapp.action.IndexAction"
           scope= "prototype"  />
+    <bean id="userAction"
+          class="com.parlow.library.webapp.action.UserAction"
+          scope= "prototype"  />
+
 
 
 </beans>

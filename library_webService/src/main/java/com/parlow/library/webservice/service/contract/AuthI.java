@@ -10,8 +10,14 @@ public interface AuthI {
 
 
     @WebMethod
-    String enregistrement(String pseudo,String mdp, String email, String profil );
+    String register(String pseudo,String password, String email, String profile );
 
     @WebMethod
-    String connecter(String email, String mdp);
+    String connexion(String email, String password);
+
+    @WebMethod
+    String findUser(int id);
+
+    @WebMethod
+    String findEmail(String email);
 }

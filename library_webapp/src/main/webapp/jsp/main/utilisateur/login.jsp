@@ -45,10 +45,10 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="sr-only" for="password">Mot de passe</label>
+                            <label class="sr-only" for="mdp">Mot de passe</label>
                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                 <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                <s:password type="password" class="form-control" name="password"  placeholder="Mot de passe"  required="true"/>
+                                <s:password type="password" class="form-control" name="mdp"  placeholder="Mot de passe"  required="true"/>
                             </div>
                         </div>
                     </div>
@@ -66,6 +66,17 @@
                         <span class="text-danger align-middle">
                             <s:actionerror class="text-danger align-middle"/>
                         </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6" style="padding-top: .35rem">
+                        <span class="text-danger align-middle">
+                            <s:actionerror class="text-danger align-middle"/>
+                        </span>
+                        <s:if test="hasFieldErrors()">
+                            <small class="text-danger align-middle"><s:fielderror fieldName="result" style="list-style:none"/></small>
+                        </s:if>
                     </div>
                 </div>
 
@@ -87,6 +98,8 @@
                         <a class="btn btn-link" href="#">Vous avez oublié votre mot de passe ?</a>
                     </div>
                 </div>
+
+
 
            </form>
         </div>

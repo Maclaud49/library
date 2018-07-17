@@ -31,13 +31,13 @@ public class AuthImpl  {
 
 
     @WebMethod
-    public String enregistrement(String pseudo,String mdp, String email, String profil ){
+    public String register(String pseudo,String password, String email, String profile ){
 
         StringBuilder message = new StringBuilder();
 
         logger.debug("pseudotest " + pseudo);
 
-        UtilisateurEntity utilisateur = new UtilisateurEntity(pseudo, mdp, email, profil);
+        UtilisateurEntity utilisateur = new UtilisateurEntity(pseudo, password, email, profile);
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -51,7 +51,7 @@ public class AuthImpl  {
         if(violations.isEmpty()){
             try{
                 this.persist(utilisateur);
-                message.append("Utilisateur enregistré");
+                message.append("Enregistré");
             } catch (Exception e){
                 logger.debug(e.toString());
             }
@@ -61,18 +61,66 @@ public class AuthImpl  {
     }
 
     @WebMethod
-    public String connecter(String email, String mdp) {
+    public String connexion(String email, String mdp) {
 
         StringBuilder message = new StringBuilder();
         UtilisateurEntity utilisateur;
 
         try {
             utilisateur = this.findMember(email, mdp);
-            message.append("Vous etes " + utilisateur.getPseudo());
+            message.append(utilisateur.getId());
+            message.append(";");
+            message.append(utilisateur.getPseudo());
+            message.append(";");
+            message.append(utilisateur.getMdp());
+            message.append(";");
+            message.append(utilisateur.getEmail());
+            message.append(";");
+            message.append(utilisateur.getProfil());
         }catch(Exception e) {
             logger.debug(e.toString());
+            message.append("Email et password ne sont pas reconnus");
         }
         return message.toString();
+    }
+
+    @WebMethod
+    public String findUser(int id){
+        StringBuilder message = new StringBuilder();
+        UtilisateurEntity utilisateur;
+
+        try {
+            utilisateur = this.findById(id);
+            message.append(utilisateur.getId());
+            message.append(";");
+            message.append(utilisateur.getPseudo());
+            message.append(";");
+            message.append(utilisateur.getMdp());
+            message.append(";");
+            message.append(utilisateur.getEmail());
+            message.append(";");
+            message.append(utilisateur.getProfil());
+
+        }catch(Exception e) {
+            logger.debug(e.toString());
+            message.append("No user with this id");
+        }
+        return message.toString();
+    }
+
+    @WebMethod
+    public String findEmail(String email){
+        StringBuilder message = new StringBuilder();
+
+        try{
+            this.findByEmail(email);
+
+        }catch(Exception e) {
+            logger.debug(e.toString());
+            message.append("No user with this email");
+        }
+        return message.toString();
+
     }
 
     private void persist(UtilisateurEntity entity) {
@@ -92,6 +140,13 @@ public class AuthImpl  {
     private UtilisateurEntity findById(int id) {
         this.utilisateurDao.openCurrentSession();
         UtilisateurEntity UtilisateurEntity = this.utilisateurDao.findById(id);
+        this.utilisateurDao.closeCurrentSession();
+        return UtilisateurEntity;
+    }
+
+    private UtilisateurEntity findByEmail(String email) {
+        this.utilisateurDao.openCurrentSession();
+        UtilisateurEntity UtilisateurEntity = this.utilisateurDao.findByEmail(email);
         this.utilisateurDao.closeCurrentSession();
         return UtilisateurEntity;
     }

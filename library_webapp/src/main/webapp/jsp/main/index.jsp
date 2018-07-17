@@ -53,7 +53,7 @@
 
 
     <!-- Call to Action Section -->
-    <s:if test="!#session.escalade_user">
+    <s:if test="!#session.library_user">
         <div class="row mb-4">
             <div class="col-md-8">
                 <p>Enregistre toi pour profiter pleinement de ce site</p>

@@ -13,6 +13,8 @@ public interface UtilisateurDaoInterface<T> {
 
     T findById(int id);
 
+    T findByEmail(String email);
+
     void delete(T entity);
 
     List<T> findAll();

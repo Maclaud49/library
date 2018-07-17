@@ -15,16 +15,16 @@
         <!--<result>/jsp/error.jsp</result> -->
         </action>
 
-        <!-- #################################### UTILISATEUR #################################################################-->
+        <!-- #################################### User #################################################################-->
         <!-- Actions Login/Logout/Register -->
-        <action name="login" class="loginAction" method="doLogin">
+        <action name="login" class="userAction" method="doLogin">
             <result name="success" type="redirectAction">index</result>
             <result name="input">/jsp/main/utilisateur/login.jsp</result>
         </action>
-        <action name="logout" class="loginAction" method="doLogout">
+        <action name="logout" class="userAction" method="doLogout">
             <result type="redirectAction">index</result>
         </action>
-        <action name="register" class="registerAction" method="doRegister">
+        <action name="register" class="userAction" method="doRegister">
             <result name="success" type="redirectAction">index</result>
             <result name="input">/jsp/main/utilisateur/register.jsp</result>
         </action>
